@@ -1,0 +1,112 @@
+<style>
+
+h1, legend,h3 {
+   
+   background:#000;
+  color:#fff;
+   
+   text-align: center;
+}
+
+
+    form {
+        border: 3px solid #f1f1f1;
+    }
+
+    /*input[type=text], input[type=password] {
+        width: 50%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+
+    }*/
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 20%;
+    }
+
+
+    .container {
+        padding: 16px;
+    }
+</style>
+
+
+<!--<h1>Local Registration</h1>-->
+
+<fieldset>
+    <legend>Register with a Social Provider</legend>
+    <ul>
+        <li ng-repeat="externalLogin in account.externalLogins">
+            <a target="_self" href="{{externalLogin.url}}">{{externalLogin.name}}</a>
+        </li>
+    </ul>
+
+</fieldset>
+
+<fieldset>
+    <!--<h3>Local Registration</h3>-->
+
+    <div class="container" style="background-color:#f1f1f1">
+        <ul>
+            <li ng-repeat="message in controller.validationMessages">
+                {{message}}
+            </li>
+        </ul>
+        <form ng-submit="controller.register()">
+            <h3>Register</h3>
+
+            <div>
+                <label>Name:</label>
+                <input ng-model="controller.registerUser.name" type="text" placeholder="Name" required />
+            </div>
+            <br />
+            <div>
+                <label>City:</label>
+                <input ng-model="controller.registerUser.location" type="text" placeholder="City" required />
+            </div>
+            <br />
+            <div>
+                <label>Contact:</label>
+                <input ng-model="controller.registerUser.contact" type="text" placeholder="Contact" required />
+            </div>
+            <br />
+            <div>
+                <label>Email:</label>
+                <input type="text" ng-model="controller.registerUser.email" placeholder="Email" required />
+            </div>
+            <br />
+            <div>
+                <label>Password:</label>
+                <input ng-model="controller.registerUser.password" type="password" placeholder="Password" required />
+            </div>
+            <br />
+            <div>
+                <label>Confirm Password:</label>
+                <input ng-model="controller.registerUser.confirmPassword" type="password" placeholder="Confirm Password" required />
+            </div>
+            <br />
+            <input type="submit" class="btn btn-primary" value="Register" />
+        </form>
+    </div>
+
+
+
+    <div class="container-fluid" style="padding: 10px;
+    margin-bottom: 10px;  display:block; text-align:justify">
+        <ul>
+            <li ng-repeat="message in controller.validationMessages">
+                {{message}}
+            </li>
+        </ul>
+
+      </div> 
+</fieldset>

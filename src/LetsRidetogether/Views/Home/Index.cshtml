@@ -1,0 +1,113 @@
+<html ng-app="LetsRidetogether">
+
+<head>
+    <title>LetsRideTogether</title>
+
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/css/Carpool.css" rel="stylesheet" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
+    <base href="/" />
+
+</head>
+<body ng-controller="AccountController as account">
+    <div class="homepagebg">
+        @*<div class="container">*@
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+
+                <a class="navbar-brand" href="/">
+                    Lets Ride Together
+                    <img class="icon icons8-Car"
+                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAD1klEQVR4Xu1ZQVLbQBDsJSlXcgq8AHNISrrBCwIXZE4hL8B5QcgLPH5ByAtivyDOCYsL5AVxTlYlB8wL4pygKOJJyUhEyJJ2V7LlrbJ89c7OTE/vbM9KYMV/YsXzRwVAxYAVR6A6AitOgKoJVkegOgIrjkB1BIoSwGq7R2BuCohtAOtF91O0HzN4ACE6XsvpKtokLsvNgDqdrz/H7TkAP/Fl/gbXqO2NaG+cJ4jcANjkfjcg+TDnwZCcndIAsOisKcCf8zhclA1DvPNov6O7fy4GxKvPQPcGteO8NNQN2j9+z3B7IoCjiG0uFmgDYNFpXWDtMhr0NWobZSUf+g160O9oHIzJlkcHIx1AtQGwqX8MiI+hEwa+eeTs6jid11qL3AsBvP6/H38YUuNEZ399AFr9HoR4U8SpToBZa+PFAPPXYbtxqLO/FgDzop1OgFlr53EctQB4Re7hE+BLpPpXQ2rU55VQnn1s6o8AsRna/gXe/iSnp7qXFgAWuZ1HnZf507DdOFZ1toh1dqt/AiHeR3pS1yOnqepLCwCbXL/rPshdxmTPo4MLVWeLWGfR6a7Amq9Iw994SM6Gqq9UAIIGs3kH0f1F+4OXdLb9FOyrv+mPgT8eOWVp/8x8LHLHAngRLrqD2InEfMQQP9JEUioAFvUvBcT0fDN4JCB8rf2g+33xo0M11YrkWTdzNIEBg9fD+AGkiqREAOLVzhOUaTZpIikRgHhjMS2ZfPEki6TUIzBlAU+aEDiMXjP5nC/Hyu9TAHoToJd2NSrdAoaNvkpo+n3Lo8aWbLEUANPUX1pCSX1LZUiTAjA7+/PS1V8aCHFVqPJGIAXAjg8/gfoLmNFi8P3wcf8+15ZRruj/WX7zqEI5ACnqL/GmKEEaZ/mdnVUgVYUqAHC0akNypjZxWRwKJpXGU4QFMr82uYnxpvnMDUBcfgYCeeH9Qea3TABIAK0osgy0PXKoSIVltha5mX5LA2B6DKajqC+U/HlBdBadfAhOlt9SAZBVax4zRTjZyXw9gFNWD1AJKGFKUzF7tEZ36jSGAUkKUjv7wEBF0RnHgJkX27zZT+3Un7uNYUD0QeW+SarfEPFOrzrYBPqkHB2QVdC4IvPH0hvU6qpfj4JPX6PoM5fqa68xDCjE+ALGFQCLvgYLFGcppuHsMrdZYClZFHBaARBMrxUDUhCQjsPJ42dktxIeQdKqJ3++lz/fKQDgf3sTnbSncd1hpcBxnjHNHrb4isFN2bdLKQDzDNjEvSoATKxKmTFVDCgTbRN9VQwwsSplxlQxoEy0TfRVMcDEqpQZ08oz4B/dRBtfFUfGcwAAAABJRU5ErkJggg==" width="27px">
+                </a>
+
+            </div>
+            <ul class="nav navbar-nav">
+
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/secret">Contact</a></li>
+                <li>
+                    <a href="/login" class="glyphicon glyphicon-log-in" ng-show="!account.isLoggedIn()">Login</a>
+                    <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
+                    <div ng-show="account.isLoggedIn()">
+                        <font color="white">[{{account.getUserName()}}]</font>
+                    </div>
+                </li>
+
+                <li><a href="/register" ng-show="!account.isLoggedIn()"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            </ul>
+
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="search" ng-model="search" ng-model-options="{debounce:1000}" name="SearchString"
+                            class="form-control glyphicon glyphicon-search" placeholder="Search">
+                </div>
+                @*<button type="button" class="btn btn-primary">Submit</button>*@
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Help</a></li>
+            </ul>
+
+
+        </nav>
+
+
+
+
+        <hr />
+        <ui-view></ui-view>
+
+
+    </div>
+
+
+
+    <!-- Library Files -->
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-touch/angular-touch.js"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+    <!--google maps scripts-->
+    <script src="~/bower_components/angular/angular.min.js"></script>
+    <script src="~/bower_components/lodash/dist/lodash.min.js"></script>
+    <script src="~/bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+    <script src="~/bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
+
+   
+
+    <!-- App Files-->
+    <script src="/ngapp/app.js"></script>
+    <script src="/ngapp/controllers/controllers.js"></script>
+    <script src="/ngapp/services/services.js"></script>
+
+
+    <!-- Security -->
+    <script src="/ngapp/controllers/accountcontroller.js"></script>
+    <script src="/ngapp/services/accountservice.js"></script>
+
+    <!--google-map-->
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAjBaMe5MZAd2Ip-7EE6-LGn0-eYyNX3io"></script>
+        @*<script src="https://maps.googleapis.com/maps/api/js"></script>*@
+        
+
+</body>
+</html>
+
+
+
+
+
+
+

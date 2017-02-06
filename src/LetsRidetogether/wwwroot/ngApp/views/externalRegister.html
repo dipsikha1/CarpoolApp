@@ -1,0 +1,18 @@
+<fieldset>
+    <legend>Complete Registration</legend>
+
+    <ul>
+        <li ng-repeat="message in controller.validationMessages">
+            {{message}}
+        </li>
+    </ul>
+
+    <form ng-submit="controller.register()">
+        <div>
+            <label>Email:</label>
+            <input type="text" ng-model="controller.registerUser.email" placeholder="Email"/>
+        </div>
+        <input type="submit" class="btn btn-primary"  value="Register" />
+    </form>
+
+</fieldset>

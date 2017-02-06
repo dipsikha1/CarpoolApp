@@ -1,0 +1,139 @@
+<!--if not logged in, redirect to login page, if logged in, takes to home page-->
+
+
+<div class="container">
+    <div style="fill:Background">
+        <div ng-show="!account.isLoggedIn()">
+            <p>
+                <h2 class="welcometext"><strong>Welcome to Lets Ride Together Website!Please <a href="/login">Login</a></strong></h2>
+                <br />
+                <h2 class="welcometext"> <strong> New User Please <a href="/register">Register</a></strong></h2>
+            </p>
+        </div>
+
+        <div id="loggedin" ng-show="account.isLoggedIn()">
+
+            <br />
+
+            <div>
+                <div class="jumbotron" style="animation-fill-mode:forwards">
+                    <span style="font-size:x-large" class="highlight">  Welcome Back!</span>
+                    <!--<p class="mapheader">Find A Ride</p>-->
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="list-group">
+                                    <a href="/" class="list-group-item active">All Posts <span class="badge">10</span></a>
+                                    <a href="" ng-click="showForm = !showForm" class="list-group-item" ng-hide="table">Create Carpool  <span class="badge"></span></a>
+                                    <a href="" class="list-group-item">Reviews <span class="badge"></span></a>
+
+                                    <a ui ui-sref="profile({id:trip.id})" class="list-group-item">My Profile <span class="badge"></span></a>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="panel-body">
+                                    <div class="form-horizontal">
+                                        <div class="row">
+                                            <!--<div class="col-md-8">-->
+                                            <div class="form-group">
+                                                <!--<<button ng-click="showForm = !showForm" class="btn btn-primary">Create Carpool</button>-->
+
+                                                <form ng-show="showForm" ng-submit="controller.post(trip)">
+                                                    <input type="text" ng-model="trip.startAddress" placeholder="Start Address" required />
+                                                    <input type="text" ng-model="trip.endAddress" placeholder="End Address" required />
+                                                    <input type="text" ng-model="trip.cost" placeholder="Cost" />
+                                                    <input type="text" ng-model="trip.car.model" placeholder="Car Make And Model" required />
+                                                    <input type="text" ng-model="trip.car.seatCapacity" placeholder="Seat Capacity" required />
+                                                    <input button class="btn-primary" type="submit" />
+                                                </form>
+                                                <div>
+                                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d443090.18932719226!2d-95.68148125035142!3d29.816882393099576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640b8b4488d8501%3A0xca0d02def365053b!2sHouston%2C+TX!5e0!3m2!1sen!2sus!4v1476284913963" width="600" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                                </div>
+                                                <!--<div ng-controller="HomeController as controller">
+                                                    <ui-gmap-google-map center='controller.center' zoom='controller.zoom'></ui-gmap-google-map>
+                                                    <ng-map center="[40.74, -74.18]"></ng-map>
+                                                </div>-->
+                                                <!--<h2>Available Carpool</h2>-->
+                                                <table class="table table-striped" style="background-color:lightgray; margin:50px; border:1px solid black">
+
+                                                    <tr>
+
+                                                        <th>Start Address </th>
+                                                        <th>Destination </th>
+                                                        <th> Date Posted</th>
+                                                        <th>Cost</th>
+                                                        <th>Car Make/Model</th>
+                                                        <th>Seat Capacity</th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                    </tr>
+                                                    <tr ng-repeat="trip in controller.trips | filter: search | filter: address" style="text-decoration-style:solid">
+
+                                                        <td>{{trip.startAddress}}</a></td>
+                                                        <td>{{trip.endAddress}}</td>
+                                                        <td>{{trip.datePosted | date}}</td>
+                                                        <td>{{trip.cost | currency}}</td>
+                                                        <td>{{trip.car.model}}</td>
+                                                        <td>{{trip.car.seatCapacity}}</td>
+
+
+                                                        <td>
+                                                            <!--<a ui-sref="dialog({id:trip.id})" class="btn btn-circle btn-default btn-xs" ng-click="controller.showModal(trip)" title="Details">
+                                                                <i class="glyphicon glyphicon-info-sign"></i>
+                                                            </a>-->
+                                                            <a ui-sref="details({id:trip.id})" class="btn btn-circle btn-default btn-xs" title="Details">
+                                                                <i class="glyphicon glyphicon-info-sign"></i>
+                                                            </a>
+                                                        </td>
+
+                                                        <td>
+                                                            <a ui-sref="carpool({id:trip.id})"
+                                                               class="btn btn-circle btn-default btn-xs" title="Edit">
+                                                                <i class="glyphicon glyphicon-edit"></i>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a ui-sref="about({id:trip.id})"
+                                                               class="btn btn-circle btn-default btn-xs" title="Join Carpool">
+                                                                <i class="glyphicon glyphicon-plus"></i>
+                                                            </a>
+                                                        </td>
+                                                        <td> <button class="close" ng-click="controller.delete(trip.id)" title="Delete">&times;</button></td>
+                                                    </tr>
+                                                </table>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

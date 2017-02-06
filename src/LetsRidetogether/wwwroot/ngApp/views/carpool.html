@@ -1,0 +1,47 @@
+﻿<h2><strong>Edit Carpool:</strong></h2>  <br />
+
+<form ng-submit="controller.editCar()">
+    <table class="table table-striped hovered" style="background-color:lightgray">
+        <tr>
+
+            <td>Start Address </td>
+            <td><input type="text" ng-model="controller.trip.startAddress" placeholder="Start Address" required /> </td>
+
+        </tr>
+        <tr>
+            <td>Destination </td>
+
+            <td><input  ng-model="controller.trip.endAddress" placeholder="Destination" required /></td>
+        </tr>
+        <tr>
+            <td>Cost</td>
+            <td> <input type="text" ng-model="controller.trip.cost" placeholder="Cost" /></td>
+        </tr>
+        <tr>
+            <td>Car Make/Model</td>
+            <td><input type="text" ng-model="controller.trip.car.model" placeholder="Car Make And Model" required /></td>
+        </tr>
+        <tr>   <td>Seat Capacity</td>
+            <td><input type="text" ng-model="controller.trip.car.seatCapacity" placeholder="Seat Capacity" required /></td></tr> 
+
+    </table>
+    <div class="carpoolbtn" style="align-items:center">
+        <button class="btn-primary" type="submit">Save</button>
+
+        <button class="btn-primary" type="submit" ng-click="controller.cancel()">Cancel</button>
+    </div>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,133 @@
+﻿<div class="container" style="background-color:#f1f1f1">
+
+    <h2 style="text-align:center">Carpool Details:</h2>
+
+    <div>
+      
+        <ui-gmap-google-map center="controller.center"  zoom ="controller.zoom">
+            <ui-gmap-markers models="controller.markers"
+                             coords="'self'"
+                                 icon="'icon'" 
+                             options="'options'">
+            </ui-gmap-markers>
+        </ui-gmap-google-map>
+
+    </div>
+
+   
+
+
+    <table class="table table-striped table-hover" style="width:100%;background-color:lightgray; text-align:center">
+        <tr>
+            <th>Start</th>
+            <td>{{controller.trip.startAddress}}</td>
+        </tr>
+        <tr>
+            <th>End</th>
+            <td>{{controller.trip.endAddress}}</td>
+        </tr>
+
+        <tr>
+            <th>Cost</th>
+            <td>{{controller.trip.cost | currency}}</td>
+        </tr>
+        <tr>
+            <th>Car Make/Model</th>
+            <td>{{controller.trip.car.model}}</td>
+        </tr>
+
+        <tr>
+            <th>Seat Capacity</th>
+            <td>{{controller.trip.car.seatCapacity}}</td>
+        </tr>
+
+        <tr>
+            <th> Carpool Posted By</th>
+            <td ng-repeat="user in controller.trip.userTripDTO">{{user.name}}</td>
+        </tr>
+        <tr>
+        <tr>
+
+    </table>
+
+    <!--<form style="font-size:medium; text-align:center">
+          Posted By:
+          <p ng-repeat="user in controller.trip.userTripDTO">
+              Name: {{user.name}}
+              <br />
+              Location :{{user.location}}
+              <br />
+
+              Contact:
+              {{user.contact}}
+          </p>-->
+    <blockquote style="font-size:medium; text-align:center">
+      
+        User Rating:
+        <p ng-repeat="review in controller.trip.reviewDTO">
+            Rating: {{review.rating}}
+ <br />
+            <br />
+            Comment: {{review.comment}}
+        </p>
+    </blockquote>
+    <!--Rating Out of 5:
+    <div class="rating">
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+    <br />-->
+    <!--<span>
+    </form>-->
+
+
+
+    <form ng-submit="controller.post(review)">
+        <blockquote>
+            <b>
+                Rating:<select ng-model="review.rating">
+                    <option value=1>☆</option>
+                    <option value=2>☆☆</option>
+                    <option value=3>☆☆☆</option>
+                    <option value=4>☆☆☆☆</option>
+                    <option value=5>☆☆☆☆☆</option>
+                </select>{{review.rating}}
+            </b>
+            <br />
+            <b>
+                Leave A Comment:
+                <input type="text" ng-model="review.comment" placeholder="Enter here..." />
+            </b>
+
+            {{review.comment}}
+            <br />
+            <b class="uname">
+                Posted By:
+
+                {{user.name}}
+
+                <select ng-model="review.username">
+                    <option value="{{controller.trip.reviewDTO.username}}">{{controller.trip.reviewDTO.username}}</option>
+                    <option value="Anonymous">Anonymous</option>
+                </select>
+                <input type="submit" value="submit" />
+
+
+                <a href="/" class="btn btn-default">
+                    <i id="addbtn" class="glyphicon glyphicon-hand-left"></i>
+                    Cancel
+                </a>
+        </blockquote>
+    </form>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+

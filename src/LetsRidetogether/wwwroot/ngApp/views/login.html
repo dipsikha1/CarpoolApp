@@ -1,0 +1,43 @@
+
+<fieldset>
+
+ <legend class="textlegend">Login with a Social Provider</legend>
+
+        <ul>
+            <li ng-repeat="externalLogin in account.externalLogins">
+                <a target="_self" href="/api/account/ExternalLogin?provider={{externalLogin.authenticationScheme}}&returnUrl=/">{{externalLogin.displayName}}</a>
+            </li>
+        </ul>
+
+    </fieldset>
+
+    <div class="container" style="background-color:#f1f1f1">
+        <ul>
+            <li ng-repeat="error in controller.validationMessages">
+                {{error}}
+            </li>
+        </ul>
+        <form class="login" ng-submit="controller.login()">
+            <h3 class="title">Log in</h3>
+            <div>
+                <input type="text" ng-model="controller.loginUser.email" placeholder="Email" autofocus required />
+                <i class="fa fa-user"></i>
+            </div>
+            <br/>
+            <div>
+                <input type="password" ng-model="controller.loginUser.password" placeholder="Password" required />
+                <i class="fa fa-key"></i>
+            </div>
+            <br/>
+            <button type="submit">
+                <i class="spinner"></i>
+                <span class="state">Log in</span>
+            </button>
+        </form>
+        <footer><a href="/register">Sign Up</a></footer>
+
+    </div>
+
+
+
+
