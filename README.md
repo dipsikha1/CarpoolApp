@@ -1,1 +1,1 @@
-# testing
+Carpool App created with Asp.net framework, using c# for backend and angularjs for front end and SQL database with CRUD functionality. With this App, user is able to log in, create profile, post carpool offers along with price and review other users. This app doesnt allow user (other than post owner) to update or delete the posts. 
